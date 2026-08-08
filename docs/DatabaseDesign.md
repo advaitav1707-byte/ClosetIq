@@ -2,7 +2,7 @@
 
 ## Entity 1: User
 
-Stores user account information.
+Stores user account and basic profile information.
 
 Attributes:
 
@@ -14,24 +14,45 @@ Attributes:
 
 ---
 
-## Entity 2: Clothing Item
+## Entity 2: Fashion Item
 
-Stores all wardrobe items.
+Stores every fashion item in the user's personal collection.
+
+A fashion item can belong to different categories such as clothing, jewelry, footwear, or accessories.
 
 Attributes:
 
-- Clothing ID
+- Fashion Item ID
 - User ID
-- Clothing Name
+- Item Name
 - Category
+- Subcategory
 - Color
 - Brand
-- Season
+- Material
 - Occasion
+- Season
 - Purchase Date
 - Purchase Price
 - Number of Times Worn
-- Clothing Image
+- Image
+
+### Main Categories
+
+- Clothing
+- Jewelry
+- Footwear
+- Accessories
+
+### Examples
+
+Clothing → Shirt, Jeans, Dress, Jacket
+
+Jewelry → Earrings, Necklace, Ring, Bracelet, Watch
+
+Footwear → Sneakers, Heels, Flats, Boots, Sandals
+
+Accessories → Bags, Belts, Sunglasses, Scarves, Hair Accessories
 
 ---
 
@@ -46,37 +67,86 @@ Attributes:
 - Outfit Name
 - Occasion
 - Date Created
+- Style/Vibe
+
+Examples of Style/Vibe:
+
+- Casual
+- Minimal
+- Formal
+- Streetwear
+- Elegant
+- Party
+
+---
+
+## Entity 4: Outfit Items
+
+Connects fashion items with outfits.
+
+Attributes:
+
+- Outfit Item ID
+- Outfit ID
+- Fashion Item ID
+
+This allows one outfit to contain multiple fashion items.
+
+For example:
+
+An outfit can contain:
+
+- White Shirt
+- Blue Jeans
+- Gold Earrings
+- White Sneakers
+- Black Bag
 
 ---
 
 ## Relationships
 
-One User
+### User → Fashion Items
 
-↓
+One User can own many Fashion Items.
 
-can own
+**Relationship: 1 : Many**
 
-↓
+---
 
-Many Clothing Items
+### User → Outfits
 
-One User
+One User can create many Outfits.
 
-↓
+**Relationship: 1 : Many**
 
-can create
+---
 
-↓
+### Outfit → Fashion Items
 
-Many Outfits
+One Outfit can contain many Fashion Items.
 
-One Outfit
+One Fashion Item can also be used in many Outfits.
 
-↓
+**Relationship: Many : Many**
 
-contains
+This relationship is managed through the Outfit Items entity.
 
-↓
+---
 
-Multiple Clothing Items
+## AI and Personalization Data
+
+ClosetIQ can use information from the user's fashion items and outfit history to understand their preferences.
+
+Potential data points include:
+
+- Frequently worn colors
+- Frequently worn categories
+- Preferred brands
+- Most-used fashion items
+- Least-used fashion items
+- Frequently combined items
+- Preferred outfit styles
+- Shopping patterns
+
+This information can later be used for personalized outfit recommendations and smarter purchase suggestions.
